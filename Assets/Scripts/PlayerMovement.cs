@@ -44,5 +44,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	private void FixedUpdate() {
 		rb.velocity = moveSpeed * inputVector * (diagMove ? 1 / Mathf.Sqrt(2) : 1);
+		rb.rotation = 0;
 	}
+
 }
