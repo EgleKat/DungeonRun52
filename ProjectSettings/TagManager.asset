@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Pit
   - Enemy
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
@@ -17,17 +18,17 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Player
   - 
   - Wall
   - 
   - 
   - 
+  - Bullet
+  - PlayerBullet
   - 
   - 
-  - 
-  - 
-  - 
+  - Enemy
   - 
   - Floor
   - 

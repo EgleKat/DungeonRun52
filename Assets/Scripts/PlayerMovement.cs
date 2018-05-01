@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour {
 			sr.flipX = false;
 		}
 		anim.SetInteger("moveID", moveID);
+		sr.sortingOrder = (int)(-transform.position.y * 100);
 	}
 
 	private void FixedUpdate() {
