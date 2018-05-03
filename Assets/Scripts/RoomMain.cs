@@ -6,6 +6,7 @@ public class RoomMain : MonoBehaviour {
 
 	public int roomID;
 	public Vector2 roomSize;
+	public bool bossRoom;
 
 	[HideInInspector] public int locID = -1;
 	[HideInInspector] public HashSet<int> passages;

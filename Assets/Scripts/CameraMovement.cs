@@ -18,6 +18,10 @@ public class CameraMovement : MonoBehaviour {
 		endPos = new Vector3(point.x, point.y, transform.position.z);
 	}
 
+	public void JumpToPoint(Vector2 point) {
+		transform.position = new Vector3(point.x, point.y, transform.position.z);
+	}
+
 	void Update() {
 		if (locked) {
 			transform.position = Vector3.Lerp(transform.position, endPos, Time.deltaTime * 2.5f);

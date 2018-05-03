@@ -20,7 +20,9 @@ public class LockMain : MonoBehaviour {
 		sr = GetComponent<SpriteRenderer>();
 		coll = GetComponent<Collider2D>();
 		fm = GameObject.FindGameObjectWithTag("FloorManager").GetComponent<FloorManager>();
-		spriteList = fm.lockSpriteList;
+		spriteList[0] = fm.lockSpriteList[0];
+		spriteList[1] = fm.lockSpriteList[1];
+		spriteList[2] = fm.lockSpriteList[2];
 	}
 
 	public void SetState(int state) {
