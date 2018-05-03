@@ -1,3 +1,5 @@
 https://thkaspar.itch.io/pixel-hero-base-classic - pixel man art
 https://0x72.itch.io/16x16-dungeon-tileset - dungeon sprites
 https://opengameart.org/content/bullet-collection-1-m484 - bullet sprites
+https://opengameart.org/content/free-keyboard-and-controllers-prompts-pack - input sprites
+https://fonts.google.com/specimen/Press+Start+2P - ingame font

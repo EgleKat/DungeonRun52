@@ -7,8 +7,11 @@ public class EnemyCombat : MonoBehaviour {
 	public float maxHP;
 
 	[HideInInspector] public float hp;
+	[HideInInspector] public RoomMain rm;
+	[HideInInspector] public int locID;
 
 	protected GameObject player;
+	protected FloorManager fm;
 	protected SpriteRenderer sr;
 	protected Rigidbody2D rb;
 
@@ -19,6 +22,7 @@ public class EnemyCombat : MonoBehaviour {
 	private void Start() {
 		hp = maxHP;
 		player = GameObject.FindGameObjectWithTag("Player");
+		fm = GameObject.FindGameObjectWithTag("FloorManager").GetComponent<FloorManager>();
 		sr = GetComponent<SpriteRenderer>();
 		rb = GetComponent<Rigidbody2D>();
 		StartExtended();
@@ -34,24 +38,28 @@ public class EnemyCombat : MonoBehaviour {
 	}
 
 	public void GetHit(float dmg, Vector2 knockback) {
+		if (locID == fm.currLoc) {
 
-		//Adjust variables
-		rb.velocity = knockback;
-		hp -= dmg;
+			//Adjust variables
+			rb.velocity = knockback;
+			hp -= dmg;
 
-		//Set hurt
-		hurt = true;
-		hurtTime = Time.time + 0.2f;
-		sr.material.color = new Color(1.6f, 0.8f, 0.8f);
+			//Set hurt
+			hurt = true;
+			hurtTime = Time.time + 0.2f;
+			sr.material.color = new Color(1.6f, 0.8f, 0.8f);
 
-		//Check if dead
-		if (hp <= 0) {
-			Die();
+			//Check if dead
+			if (hp <= 0) {
+				Die();
+			}
 		}
 	}
 
 	public void Die() {
 		Destroy(gameObject);
+		rm.enemies.Remove(gameObject);
+		rm.CheckEnemies();
 	}
 
 	public virtual void StartExtended() {}

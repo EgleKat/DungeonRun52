@@ -11,10 +11,9 @@ public class SkeletonCombat : EnemyCombat {
 	}
 
 	private void FixedUpdate() {
-		rb.velocity = rb.velocity * 0.8f + 
-			new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y).normalized * moveSpeed * 0.2f;
+		if (locID == fm.currLoc) {
+			rb.velocity = rb.velocity * 0.8f +
+				new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y).normalized * moveSpeed * 0.2f;
+		}
 	}
-
-	
-
 }
