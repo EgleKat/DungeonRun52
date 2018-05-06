@@ -6077,7 +6077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomID: 0
-  roomSize: {x: 11, y: 9}
+  roomSize: {x: 11, y: 7}
   bossRoom: 0
   locID: 0
   enemies: []
