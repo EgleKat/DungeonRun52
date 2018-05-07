@@ -144,23 +144,29 @@ MonoBehaviour:
   - {fileID: 1530258207885852, guid: ed495e007658f5a4f8ed554e7b381ec0, type: 2}
   - {fileID: 1813715505824384, guid: 99c7406edf24ffe4ba981badb640dc2a, type: 2}
   - {fileID: 1465449825640270, guid: b6a7335bb672b334c870cc63702932e3, type: 2}
-  - {fileID: 1813715505824384, guid: 99c7406edf24ffe4ba981badb640dc2a, type: 2}
-  - {fileID: 1465449825640270, guid: b6a7335bb672b334c870cc63702932e3, type: 2}
-  - {fileID: 1813715505824384, guid: 99c7406edf24ffe4ba981badb640dc2a, type: 2}
-  - {fileID: 1465449825640270, guid: b6a7335bb672b334c870cc63702932e3, type: 2}
-  - {fileID: 1813715505824384, guid: 99c7406edf24ffe4ba981badb640dc2a, type: 2}
-  - {fileID: 1465449825640270, guid: b6a7335bb672b334c870cc63702932e3, type: 2}
-  - {fileID: 1813715505824384, guid: 99c7406edf24ffe4ba981badb640dc2a, type: 2}
+  - {fileID: 1954121517484340, guid: 8ed3fc9d3eda6174aaa43fbc1b4a0b77, type: 2}
+  - {fileID: 1558739330136138, guid: 1d0c0be8ac0b5ad4f80f98e70f9a9fe6, type: 2}
+  - {fileID: 1520005553086958, guid: f3402f8a834088d49a2cc785873c7377, type: 2}
+  - {fileID: 1096073277094500, guid: 47f56b9e2c7c6e345a6b53818f1491aa, type: 2}
+  - {fileID: 1096073277094500, guid: 47f56b9e2c7c6e345a6b53818f1491aa, type: 2}
+  - {fileID: 1096073277094500, guid: 47f56b9e2c7c6e345a6b53818f1491aa, type: 2}
+  - {fileID: 1096073277094500, guid: 47f56b9e2c7c6e345a6b53818f1491aa, type: 2}
   - {fileID: 1243330393548182, guid: 963db6aa8bfccfb4e9eba1512987b727, type: 2}
+  - {fileID: 1096073277094500, guid: 47f56b9e2c7c6e345a6b53818f1491aa, type: 2}
+  - {fileID: 1096073277094500, guid: 47f56b9e2c7c6e345a6b53818f1491aa, type: 2}
+  - {fileID: 1096073277094500, guid: 47f56b9e2c7c6e345a6b53818f1491aa, type: 2}
+  - {fileID: 1096073277094500, guid: 47f56b9e2c7c6e345a6b53818f1491aa, type: 2}
+  - {fileID: 1372116273581958, guid: 5e5a186b20f090844aa236177302b3c3, type: 2}
   lockSpriteList:
   - {fileID: 21300000, guid: 2c6aaa67fcc714a4b926ded8c5d95e21, type: 3}
   - {fileID: 21300000, guid: 5997d6359065e734a8792989072cdda9, type: 3}
   - {fileID: 21300000, guid: f3f214d38beb30e4caf30483c649f5f1, type: 3}
-  gridSize: {x: 40, y: 24}
-  maxRooms: 2
+  gridSize: {x: 80, y: 50}
+  maxRooms: 5
   genAssets:
   - {fileID: 1441743511249978, guid: 8b98075d195a39b41837c4773334f543, type: 2}
   - {fileID: 1539517986326344, guid: 54ddfb283eb7d8c41af6adc68e16140f, type: 2}
+  - {fileID: 1109633016514064, guid: 890c81998ad42b8448d2a91bee6382d8, type: 2}
   currLoc: -1
 --- !u!4 &147522916
 Transform:
@@ -430,4 +436,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullets:
   - {fileID: 1197051401550232, guid: 993c10b1dee214141b96f636508e8761, type: 2}
+  - {fileID: 1222169294090708, guid: 6de5a94c59c0f3f49abfe782f001380e, type: 2}
+  - {fileID: 1767325141270904, guid: 581df5a11b2c2844fbc0b03f45b6d257, type: 2}
+  - {fileID: 1640614326645312, guid: 185371c4c6d21624cae3b5fc97297860, type: 2}
+  - {fileID: 1775587008997958, guid: 50ffd0d49281bb84fb2156995696673a, type: 2}
   currGun: 0

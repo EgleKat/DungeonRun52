@@ -9,6 +9,7 @@ public class PlayerBullet : MonoBehaviour {
 	public float lifetime;
 	public bool piercing;
 	public float weight;
+	public float rps;
 
 	[HideInInspector] public Vector2 moveVector;
 
@@ -31,6 +32,8 @@ public class PlayerBullet : MonoBehaviour {
 		} else {
 			sr.sortingOrder = (int)(-transform.position.y * 100);
 		}
+		Vector3 trl = transform.rotation.eulerAngles;
+		transform.Rotate(0, 0, rps * 360 * Time.deltaTime);
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {

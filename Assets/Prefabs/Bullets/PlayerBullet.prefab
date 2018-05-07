@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4432637924403710}
   - component: {fileID: 212282743873786168}
-  - component: {fileID: 50934616919712482}
-  - component: {fileID: 58781306977353948}
   - component: {fileID: 114307769958237358}
+  - component: {fileID: 58781306977353948}
+  - component: {fileID: 50934616919712482}
   m_Layer: 15
   m_Name: PlayerBullet
   m_TagString: PlayerBullet
@@ -93,6 +93,7 @@ MonoBehaviour:
   lifetime: 1
   piercing: 0
   weight: 0.5
+  rps: 0
   moveVector: {x: 0, y: 0}
 --- !u!212 &212282743873786168
 SpriteRenderer:

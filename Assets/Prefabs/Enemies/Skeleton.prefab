@@ -91,6 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 3
   hp: 0
+  rm: {fileID: 0}
+  locID: 0
   moveSpeed: 1
 --- !u!212 &212588600738614436
 SpriteRenderer:

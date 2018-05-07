@@ -182,8 +182,10 @@ public class FloorManager : MonoBehaviour {
 		floorGrid = new int[gs[0], gs[1]];
 		PaintGrid(0, 0, 0, gs[0], gs[1]);
 		rrl = new List<int>();
-		for (int i = 1; i<3; i++) {
-			rrl.Add(i);
+		for (int i = 1; i<10; i++) {
+			if (roomList[i].name != "EmptyRoom") {
+				rrl.Add(i);
+			}
 		}
 		rrl = ShuffleList(rrl);
 
@@ -195,12 +197,13 @@ public class FloorManager : MonoBehaviour {
 		asr[0].index = 0;
 
 		PlaceRoomDistanced(10, Mathf.Max(gs[0], gs[1])/2, asr[0]);
+		PlaceRoomRegular(15);
 		for (int r = 0; r<maxRooms; r++) {
 			PlaceRoomRegular(rrl[r]);
 		}
 
 		//Build rooms if can
-		if (asr.Count >= maxRooms/1.5f + 2 && asr[1].index == 10) {
+		if (asr.Count >= maxRooms/1.2f + 3 && asr[1].index == 10 && asr[2].index == 15) {
 
 			// --Connect dungeon--
 
@@ -274,9 +277,9 @@ public class FloorManager : MonoBehaviour {
 						int y0 = srStart.y;
 						int y1 = srEnd.y;
 						int mid = (y0 + y1) / 2;
-						PaintPath(2, 1, x0, Mathf.Min(y0, mid), 1, Mathf.Abs(y0 - mid) + 1);
+						PaintPath(2, 1, x0, Mathf.Min(y0, mid), 1, Mathf.Abs(y0 - mid));
 						PaintPath(2, 1, Mathf.Min(x0, x1), mid, Mathf.Abs(x0 - x1) + 1, 1);
-						PaintPath(2, 1, x1, Mathf.Min(y1, mid), 1, Mathf.Abs(y1 - mid) + 1);
+						PaintPath(2, 1, x1, Mathf.Min(y1, mid), 1, Mathf.Abs(y1 - mid));
 					} else if (pe.startLock % 2 == 1) {
 						int x0 = srStart.x;
 						int x1 = srEnd.x;
@@ -331,7 +334,7 @@ public class FloorManager : MonoBehaviour {
 						Instantiate(genAssets[0],  new Vector3(i * 0.64f, j * 0.64f, 0), Quaternion.identity);
 						if (FloorGridSafe(i - 1, j) == 0) { Instantiate(genAssets[1], new Vector3((i - 1) * 0.64f, j * 0.64f, 0), Quaternion.identity); }
 						if (FloorGridSafe(i + 1, j) == 0) { Instantiate(genAssets[1], new Vector3((i + 1) * 0.64f, j * 0.64f, 0), Quaternion.identity); }
-						if (FloorGridSafe(i, j - 1) == 0) { Instantiate(genAssets[1], new Vector3(i * 0.64f, (j - 1) * 0.64f, 0), Quaternion.identity); }
+						if (FloorGridSafe(i, j - 1) == 0) { Instantiate(genAssets[2], new Vector3(i * 0.64f, (j - 1) * 0.64f, 0), Quaternion.identity); }
 						if (FloorGridSafe(i, j + 1) == 0) { Instantiate(genAssets[1], new Vector3(i * 0.64f, (j + 1) * 0.64f, 0), Quaternion.identity); }
 					}
 				}
@@ -353,7 +356,7 @@ public class FloorManager : MonoBehaviour {
 		Vector2 rSize = roomSizes[i];
 		int[] gs = new int[2] { (int)Mathf.Round(gridSize.x), (int)Mathf.Round(gridSize.y) };
 		int repeats = 0;
-		while (repeats < 1000000) {
+		while (repeats < 10000) {
 			Vector2 randPos = new Vector2(Random.Range(2, gs[0]-2), Random.Range(2, gs[1]-2));
 			SimRoom simRoom = new SimRoom(randPos.x, randPos.y, roomSizes[i].x, roomSizes[i].y);
 

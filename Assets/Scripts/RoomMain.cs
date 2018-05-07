@@ -44,7 +44,7 @@ public class RoomMain : MonoBehaviour {
 		if (locID > -1) {
 			//Check if entered room
 			float roomW = (roomSize.x - 1) * 0.32f;
-			float roomH = (roomSize.y - 2.5f) * 0.32f;
+			float roomH = (roomSize.y - 1) * 0.32f;
 			Vector3 pos = transform.position;
 			Vector3 pp = player.transform.position;
 			if (fm.currLoc != locID && pp.x > pos.x - roomW && pp.x < pos.x + roomW && pp.y > pos.y - roomH && pp.y < pos.y + roomH) {

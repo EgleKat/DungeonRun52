@@ -14,6 +14,7 @@ public class EnemyCombat : MonoBehaviour {
 	protected FloorManager fm;
 	protected SpriteRenderer sr;
 	protected Rigidbody2D rb;
+	protected bool dead = false;
 
 	//Hurt variables
 	protected bool hurt = false;
@@ -38,25 +39,29 @@ public class EnemyCombat : MonoBehaviour {
 	}
 
 	public void GetHit(float dmg, Vector2 knockback) {
-		if (locID == fm.currLoc) {
+		if (locID == fm.currLoc && !dead) {
 
 			//Adjust variables
 			rb.velocity = knockback;
 			hp -= dmg;
 
 			//Set hurt
-			hurt = true;
-			hurtTime = Time.time + 0.2f;
-			sr.material.color = new Color(1.6f, 0.8f, 0.8f);
+			if (!hurt) {
+				hurt = true;
+				hurtTime = Time.time + 0.2f;
+				sr.material.color = new Color(1.6f, 0.8f, 0.8f);
+			}
 
 			//Check if dead
 			if (hp <= 0) {
+				dead = true;
 				Die();
 			}
 		}
 	}
 
 	public void Die() {
+		Deathrattle();
 		Destroy(gameObject);
 		rm.enemies.Remove(gameObject);
 		rm.CheckEnemies();
@@ -64,5 +69,6 @@ public class EnemyCombat : MonoBehaviour {
 
 	public virtual void StartExtended() {}
 	public virtual void UpdateExtended() {}
+	public virtual void Deathrattle() {}
 
 }
