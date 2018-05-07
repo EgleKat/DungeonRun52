@@ -11,6 +11,13 @@ public class MusicManager : MonoBehaviour
 
     public AudioClip hit;
     public AudioClip kick;
+    public AudioClip slash;
+    public AudioClip laser;
+    public AudioClip plasma;
+    public AudioClip shot;
+
+
+
     public AudioClip backgroundMusic;
 
     private void Start()
@@ -29,7 +36,7 @@ public class MusicManager : MonoBehaviour
         {
             audioSourceBackground.clip = backgroundMusic;
         }
-       
+
         if (audioName != "stop")
             audioSourceBackground.Play();
     }
@@ -45,6 +52,22 @@ public class MusicManager : MonoBehaviour
         else if (audioName == "kick")
         {
             audioSourceEffect.clip = kick;
+        }
+        else if (audioName == "laser")
+        {
+            audioSourceEffect.clip = laser;
+        }
+        else if (audioName == "slash")
+        {
+            audioSourceEffect.clip = slash;
+        }
+        else if (audioName == "plasma")
+        {
+            audioSourceEffect.clip = plasma;
+        }
+        else if (audioName == "shot")
+        {
+            audioSourceEffect.clip = shot;
         }
         audioSourceEffect.Play();
     }

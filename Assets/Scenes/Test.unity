@@ -299,8 +299,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit: {fileID: 8300000, guid: ea861f776e0fb3b48848bd10cc799206, type: 3}
-  kick: {fileID: 0}
-  backgroundMusic: {fileID: 0}
+  kick: {fileID: 8300000, guid: 806ab978af73294479b5a64e26f1fb38, type: 3}
+  slash: {fileID: 8300000, guid: 170dfacc03c94634ab6f2d5d735760c1, type: 3}
+  laser: {fileID: 8300000, guid: 90ed8e4b31f707d43b06da74430faa15, type: 3}
+  plasma: {fileID: 8300000, guid: 995f6130b55886d4aa0f7bcd7296bc64, type: 3}
+  shot: {fileID: 8300000, guid: e52fe49e5594b9e43865ba05a9c1cfa4, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: a7db6fecc8fa07b4d80f3f396536a8da, type: 3}
 --- !u!82 &540128008
 AudioSource:
   m_ObjectHideFlags: 0
@@ -390,7 +394,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a7db6fecc8fa07b4d80f3f396536a8da, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -903,4 +907,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e438683a47ea38e44aaf16e0dddb719c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartDisplay: {fileID: 0}

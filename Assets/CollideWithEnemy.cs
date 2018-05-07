@@ -5,7 +5,7 @@ using UnityEngine;
 public class CollideWithEnemy : MonoBehaviour
 {
     private int health = 6;
-    public HeartDisplay heartDisplay;
+    private HeartDisplay heartDisplay;
     bool collidingWithEnemy;
     MusicManager musicManager;
     // Use this for initialization
@@ -40,7 +40,7 @@ public class CollideWithEnemy : MonoBehaviour
         {
             health--;
             musicManager.PlaySound("hit");
-                heartDisplay.UpdateHeartSprite(health);
+            heartDisplay.UpdateHeartSprite(health);
             if (health != 0)
             {
                 //Game Over

@@ -9,16 +9,20 @@ public class PlayerShoot : MonoBehaviour {
 	[HideInInspector] public int currGun = 0;
 	[HideInInspector] public int currItem = -1;
 
+
 	private Vector2 fireVector;
 	private float nextFire = 0;
 
 	private Rigidbody2D rb;
+    private MusicManager musicManager;
 
-	private void Start() {
+    private void Start() {
 		rb = GetComponent<Rigidbody2D>();
-	}
+        musicManager = GameObject.Find("Music Manager").GetComponent<MusicManager>();
 
-	private void Update () {
+    }
+
+    private void Update () {
 
 		//Set firing direction
 		if (Input.GetButtonDown("FireRight")) {
@@ -46,31 +50,46 @@ public class PlayerShoot : MonoBehaviour {
 
 	private void FireBullet(int gunID) {
 		if (gunID == 0) {
-			GameObject fb;
+            //default
+            musicManager.PlaySound("shot");
+
+            GameObject fb;
 			fb = Instantiate(bullets[0], transform.position, Quaternion.identity);
 			fb.GetComponent<PlayerBullet>().moveVector = rb.velocity * 0.4f + fireVector * 4;
 			nextFire = Time.time + 0.5f;
 		} else if (gunID == 1) {
-			for (int i = 0; i<3; i++) {
-				GameObject fb;
+            //shuriken
+            musicManager.PlaySound("slash");
+
+            for (int i = 0; i<3; i++) {
+                GameObject fb;
 				fb = Instantiate(bullets[1], transform.position, Quaternion.identity);
 				fb.GetComponent<PlayerBullet>().moveVector = rb.velocity * 0.2f + fireVector.Rotate(-30 + 30 * i) * 6;
-			}
-			nextFire = Time.time + 0.8f;
+            }
+            nextFire = Time.time + 0.8f;
 		} else if (gunID == 2) {
-			GameObject fb;
+            //laser
+            musicManager.PlaySound("laser");
+
+            GameObject fb;
 			Quaternion rot = (fireVector.y == 0 ? Quaternion.Euler(0, 0, 90) : Quaternion.identity);
 			fb = Instantiate(bullets[2], transform.position + new Vector3(fireVector.x, fireVector.y, 0) * 0.5f, rot);
 			fb.GetComponent<PlayerBullet>().moveVector = fireVector * 15f;
 			nextFire = Time.time + 0.03f;
 		} else if (gunID == 3) {
-			GameObject fb;
+            //spread
+            musicManager.PlaySound("slash");
+
+            GameObject fb;
 			float spread = Random.Range(-5f, 5f);
 			fb = Instantiate(bullets[3], transform.position, Quaternion.identity);
 			fb.GetComponent<PlayerBullet>().moveVector = rb.velocity * 0.2f + fireVector.Rotate(spread) * 8;
 			nextFire = Time.time + 0.15f;
 		} else if (gunID == 4) {
-			GameObject fb;
+            //Plasma ball
+            musicManager.PlaySound("plasma");
+
+            GameObject fb;
 			fb = Instantiate(bullets[4], transform.position, Quaternion.identity);
 			fb.GetComponent<PlayerBullet>().moveVector = rb.velocity * 0.2f + fireVector * 2.5f;
 			nextFire = Time.time + 2f;
