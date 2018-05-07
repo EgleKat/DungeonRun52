@@ -28,16 +28,12 @@ public class PlayerMovement : MonoBehaviour {
 		int moveID = 0;
 		if (inputVector.x < 0) {
 			moveID = 1;
-			sr.flipX = false;
 		} else if (inputVector.x > 0) {
 			moveID = 2;
-			sr.flipX = true;
 		} else if (inputVector.y < 0) {
 			moveID = 3;
-			sr.flipX = false;
 		} else if (inputVector.y > 0) {
 			moveID = 4;
-			sr.flipX = false;
 		}
 		anim.SetInteger("moveID", moveID);
 		sr.sortingOrder = (int)(-transform.position.y * 100);
