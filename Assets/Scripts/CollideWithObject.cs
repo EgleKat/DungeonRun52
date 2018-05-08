@@ -110,7 +110,7 @@ public class CollideWithObject : MonoBehaviour
                 }
             }
 
-            Invoke("DamageToPlayer", 1f);
+            Invoke("DamageToPlayer", 0.7f);
         }
     }
     public void ChangeItemHUD(int id)
