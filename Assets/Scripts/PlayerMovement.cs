@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour {
 	private SpriteRenderer sr;
 
 	private float moveSpeed = 4;
+    public float moveSpeedMultiplier = 1;
 	private Vector2 inputVector;
 	private bool diagMove;
 
@@ -40,7 +41,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	private void FixedUpdate() {
-		rb.velocity = moveSpeed * inputVector * (diagMove ? 1 / Mathf.Sqrt(2) : 1);
+		rb.velocity = moveSpeed * moveSpeedMultiplier * inputVector * (diagMove ? 1 / Mathf.Sqrt(2) : 1);
 		rb.rotation = 0;
 	}
 

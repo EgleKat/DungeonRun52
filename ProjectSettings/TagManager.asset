@@ -13,6 +13,7 @@ TagManager:
   - FloorManager
   - Room
   - Weapon
+  - Item
   layers:
   - Default
   - TransparentFX
