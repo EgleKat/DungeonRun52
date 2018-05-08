@@ -28,6 +28,11 @@ public class CollideWithObject : MonoBehaviour
         weaponHud = GameObject.Find("Weapon Image").GetComponent<Image>();
 
         collidingWithEnemy = false;
+
+        ChangeItemHUD(item.currItemID);
+        ChangeWeaponHUD(shooter.currGun);
+
+
     }
     private void Update()
     {
@@ -49,7 +54,6 @@ public class CollideWithObject : MonoBehaviour
         if (collision.gameObject.tag == "Weapon")
         {
 
-            //update hud
             //play sound
             musicManager.PlaySound("weaponSwap");
             //change weapon
@@ -59,6 +63,7 @@ public class CollideWithObject : MonoBehaviour
             //drop other weapon
             objectSpawn.UpdateObject(previousWeaponID);
 
+            //update hud
             ChangeWeaponHUD(shooter.currGun);
 
         }
@@ -72,7 +77,7 @@ public class CollideWithObject : MonoBehaviour
             //drop other item
             objectSpawn.UpdateObject(previousItemID);
 
-
+            //update hud
             ChangeItemHUD(item.currItemID);
 
         }

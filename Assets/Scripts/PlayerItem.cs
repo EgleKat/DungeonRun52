@@ -16,7 +16,7 @@ public class PlayerItem : MonoBehaviour
     private MusicManager musicManager;
     private int shieldCharges;
     private CollideWithObject collideWithObject;
- 
+
 
 
     private void Start()
@@ -52,8 +52,15 @@ public class PlayerItem : MonoBehaviour
 
         }
         //revive
+        else if (id == 2)
+        {
+
+        }
+        //broken shield
         else if (id == 3)
         {
+            shieldCharges = 1;
+            collideWithObject.shield = true;
 
         }
         currItemID = id;
@@ -62,7 +69,7 @@ public class PlayerItem : MonoBehaviour
         if (id != 0) movement.moveSpeedMultiplier = 1;
 
     }
-    
+
     public void ShieldHit()
     {
         shieldCharges--;
@@ -73,6 +80,13 @@ public class PlayerItem : MonoBehaviour
             collideWithObject.ChangeItemHUD(-1);
             collideWithObject.shield = false;
             currItemID = -1;
+        }
+        else if (shieldCharges == 1)
+        {
+            //change hud to half a shield
+            collideWithObject.ChangeItemHUD(3);
+            currItemID = 3;
+            
         }
     }
 }

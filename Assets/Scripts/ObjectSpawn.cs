@@ -15,8 +15,8 @@ public class ObjectSpawn : MonoBehaviour
         if (gameObject.tag == "Weapon")
             objectID = random.Next(1, 4);
         else if (gameObject.tag == "Item")
-            objectID = random.Next(0, 2);
-            //objectID = 1;
+            objectID = random.Next(0, 3);
+        //objectID = 1;
 
         gameObject.GetComponent<SpriteRenderer>().sprite = sprites[objectID];
 
