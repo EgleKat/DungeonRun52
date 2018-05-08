@@ -33,7 +33,6 @@ public class PlayerItem : MonoBehaviour
     public void ActivateItem(int id)
     {
 
-        currItemID = id;
         //boots
         if (id == 0)
         {
@@ -50,14 +49,22 @@ public class PlayerItem : MonoBehaviour
         else if (id == 3)
         {
 
-        }
+        }        currItemID = id;
+
+        //if it's not boots, remove speed
+        if(id != 0) movement.moveSpeedMultiplier = 1;
+
     }
 
     public void ShieldHit()
     {
         shieldCharges--;
+
         //shield depleted
         if (shieldCharges == 0)
+        {
             collideWithObject.shield = false;
+            currItemID = -1;
+        }
     }
 }
