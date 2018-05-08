@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CollideWithObject : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class CollideWithObject : MonoBehaviour
     bool collidingWithEnemy;
     public bool shield = false;
     MusicManager musicManager;
+    private Image itemHud;
+    private Image weaponHud;
+
+    public Sprite[] HUDWeaponSprites;
+    public Sprite[] HUDItemSprites;
     // Use this for initialization
     void Start()
     {
@@ -18,6 +24,8 @@ public class CollideWithObject : MonoBehaviour
         musicManager = GameObject.Find("Music Manager").GetComponent<MusicManager>();
         shooter = gameObject.GetComponent<PlayerShoot>();
         item = gameObject.GetComponent<PlayerItem>();
+        itemHud = GameObject.Find("Item Image").GetComponent<Image>();
+        weaponHud = GameObject.Find("Weapon Image").GetComponent<Image>();
 
         collidingWithEnemy = false;
     }
@@ -29,7 +37,7 @@ public class CollideWithObject : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (collision.gameObject.tag == "Enemy" )
+        if (collision.gameObject.tag == "Enemy")
         {
             collidingWithEnemy = true; //used to periodically decrease health
             DamageToPlayer();
@@ -50,6 +58,9 @@ public class CollideWithObject : MonoBehaviour
             shooter.currGun = objectSpawn.objectID;
             //drop other weapon
             objectSpawn.UpdateObject(previousWeaponID);
+
+            ChangeWeaponHUD(shooter.currGun);
+
         }
         else if (collision.gameObject.tag == "Item")
         {
@@ -61,7 +72,11 @@ public class CollideWithObject : MonoBehaviour
             //drop other item
             objectSpawn.UpdateObject(previousItemID);
 
+
+            ChangeItemHUD(item.currItemID);
+
         }
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -75,7 +90,7 @@ public class CollideWithObject : MonoBehaviour
     {
         if (collidingWithEnemy)
         {
-            if(shield)
+            if (shield)
             {
                 item.ShieldHit();
                 musicManager.PlaySound("shieldHit");
@@ -91,9 +106,18 @@ public class CollideWithObject : MonoBehaviour
                     //Game Over
                 }
             }
-           
+
             Invoke("DamageToPlayer", 1f);
         }
     }
+    public void ChangeItemHUD(int id)
+    {
+        itemHud.sprite = HUDItemSprites[id + 1];
 
+    }
+    public void ChangeWeaponHUD(int id)
+    {
+        weaponHud.sprite = HUDWeaponSprites[id];
+
+    }
 }

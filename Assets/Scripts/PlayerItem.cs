@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerItem : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class PlayerItem : MonoBehaviour
     private MusicManager musicManager;
     private int shieldCharges;
     private CollideWithObject collideWithObject;
+ 
+
 
     private void Start()
     {
@@ -21,6 +25,8 @@ public class PlayerItem : MonoBehaviour
         musicManager = GameObject.Find("Music Manager").GetComponent<MusicManager>();
         movement = gameObject.GetComponent<PlayerMovement>();
         collideWithObject = gameObject.GetComponent<CollideWithObject>();
+
+
 
     }
 
@@ -49,13 +55,14 @@ public class PlayerItem : MonoBehaviour
         else if (id == 3)
         {
 
-        }        currItemID = id;
+        }
+        currItemID = id;
 
         //if it's not boots, remove speed
-        if(id != 0) movement.moveSpeedMultiplier = 1;
+        if (id != 0) movement.moveSpeedMultiplier = 1;
 
     }
-
+    
     public void ShieldHit()
     {
         shieldCharges--;
@@ -63,6 +70,7 @@ public class PlayerItem : MonoBehaviour
         //shield depleted
         if (shieldCharges == 0)
         {
+            collideWithObject.ChangeItemHUD(-1);
             collideWithObject.shield = false;
             currItemID = -1;
         }
