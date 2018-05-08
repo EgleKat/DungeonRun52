@@ -18,6 +18,8 @@ public class MusicManager : MonoBehaviour
     public AudioClip weaponSwap;
     public AudioClip itemSwap;
     public AudioClip shieldHit;
+    public AudioClip glassBreak;
+
 
 
 
@@ -85,6 +87,10 @@ public class MusicManager : MonoBehaviour
         else if (audioName == "shieldHit")
         {
             audioSourceEffect.clip = shieldHit;
+        }
+        else if (audioName == "glassBreak")
+        {
+            audioSourceEffect.clip = glassBreak;
         }
         audioSourceEffect.Play();
     }

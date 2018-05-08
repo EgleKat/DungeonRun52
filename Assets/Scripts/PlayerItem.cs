@@ -77,16 +77,19 @@ public class PlayerItem : MonoBehaviour
         //shield depleted
         if (shieldCharges == 0)
         {
+            musicManager.PlaySound("glassBreak");
             collideWithObject.ChangeItemHUD(-1);
             collideWithObject.shield = false;
             currItemID = -1;
         }
+        //shield has one charge
         else if (shieldCharges == 1)
         {
+            musicManager.PlaySound("shieldHit");
             //change hud to half a shield
             collideWithObject.ChangeItemHUD(3);
             currItemID = 3;
-            
+
         }
     }
 }

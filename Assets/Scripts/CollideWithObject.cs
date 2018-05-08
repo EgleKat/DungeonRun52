@@ -98,8 +98,6 @@ public class CollideWithObject : MonoBehaviour
             if (shield)
             {
                 item.ShieldHit();
-                musicManager.PlaySound("shieldHit");
-
             }
             else
             {
