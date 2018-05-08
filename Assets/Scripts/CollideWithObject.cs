@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollideWithEnemy : MonoBehaviour
+public class CollideWithObject : MonoBehaviour
 {
     private int health = 6;
     private HeartDisplay heartDisplay;
@@ -25,7 +25,6 @@ public class CollideWithEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collided");
 
         if (collision.gameObject.tag == "Enemy")
         {
@@ -36,8 +35,6 @@ public class CollideWithEnemy : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Triggered");
-
         if (collision.gameObject.tag == "Weapon")
         {
 
