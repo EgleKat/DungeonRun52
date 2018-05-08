@@ -121,6 +121,7 @@ public class FloorManager : MonoBehaviour {
 	}
 
 	private void Start() {
+        //Random.InitState(1);
 		cm = Camera.main.gameObject.GetComponent<CameraMovement>();
 		player = GameObject.FindGameObjectWithTag("Player");
 		GetRoomSizes();
