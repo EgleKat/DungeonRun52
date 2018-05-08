@@ -344,6 +344,7 @@ MonoBehaviour:
   laser: {fileID: 8300000, guid: 90ed8e4b31f707d43b06da74430faa15, type: 3}
   plasma: {fileID: 8300000, guid: 995f6130b55886d4aa0f7bcd7296bc64, type: 3}
   shot: {fileID: 8300000, guid: e52fe49e5594b9e43865ba05a9c1cfa4, type: 3}
+  weaponSwap: {fileID: 8300000, guid: 3483d3ec4eae1894185772343df343e6, type: 3}
   backgroundMusic: {fileID: 8300000, guid: a7db6fecc8fa07b4d80f3f396536a8da, type: 3}
 --- !u!82 &540128008
 AudioSource:

@@ -39,6 +39,8 @@ public class CollideWithObject : MonoBehaviour
         {
 
             //update hud
+            //play sound
+            musicManager.PlaySound("weaponSwap");
             //change weapon
             WeaponSpawn weaponSpawnCollided = collision.gameObject.GetComponent<WeaponSpawn>();
             int previousWeaponID = shooter.currGun;
@@ -47,13 +49,12 @@ public class CollideWithObject : MonoBehaviour
             weaponSpawnCollided.UpdateWeapon(previousWeaponID);
         }
     }
-    
+
     private void OnCollisionExit2D(Collision2D collision)
     {
 
         if (collision.gameObject.tag == "Enemy")
             collidingWithEnemy = false;
-
 
     }
     private void DamageToPlayer()

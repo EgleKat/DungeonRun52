@@ -15,6 +15,7 @@ public class MusicManager : MonoBehaviour
     public AudioClip laser;
     public AudioClip plasma;
     public AudioClip shot;
+    public AudioClip weaponSwap;
 
 
 
@@ -68,6 +69,10 @@ public class MusicManager : MonoBehaviour
         else if (audioName == "shot")
         {
             audioSourceEffect.clip = shot;
+        }
+        else if (audioName == "weaponSwap")
+        {
+            audioSourceEffect.clip = weaponSwap;
         }
         audioSourceEffect.Play();
     }
