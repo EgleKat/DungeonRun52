@@ -12,6 +12,7 @@ TagManager:
   - Bullet
   - FloorManager
   - Room
+  - Weapon
   layers:
   - Default
   - TransparentFX
