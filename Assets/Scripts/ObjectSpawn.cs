@@ -13,10 +13,10 @@ public class ObjectSpawn : MonoBehaviour
     private void Start()
     {
         if (gameObject.tag == "Weapon")
-            objectID = random.Next(1, 4);
+            objectID = random.Next(1, 5);
         else if (gameObject.tag == "Item")
             objectID = random.Next(0, 3);
-        //objectID = 1;
+        //objectID = 4;
 
         gameObject.GetComponent<SpriteRenderer>().sprite = sprites[objectID];
 
