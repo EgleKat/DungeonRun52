@@ -308,7 +308,7 @@ MonoBehaviour:
   itemSwap: {fileID: 8300000, guid: c733e8fd6746ab341b57100239962d5b, type: 3}
   shieldHit: {fileID: 8300000, guid: f21bbcc5ca98d9c41b3fa88ef93591dd, type: 3}
   glassBreak: {fileID: 8300000, guid: 5ff89da9e8daf234aacdb48516b1122b, type: 3}
-  backgroundMusic: {fileID: 8300000, guid: a7db6fecc8fa07b4d80f3f396536a8da, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: d6862b81a3d3c7d43b2ecd82a5ac1dbf, type: 3}
 --- !u!82 &540128008
 AudioSource:
   m_ObjectHideFlags: 0
@@ -398,9 +398,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a7db6fecc8fa07b4d80f3f396536a8da, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d6862b81a3d3c7d43b2ecd82a5ac1dbf, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
