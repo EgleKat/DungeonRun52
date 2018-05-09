@@ -16,7 +16,6 @@ public class HeartDisplay : MonoBehaviour {
 	
 	public void UpdateHeartSprite(int numberOfHearts)
     {
-        Debug.Log(numberOfHearts);
         switch (numberOfHearts)
         {
             case 0:

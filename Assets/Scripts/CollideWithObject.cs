@@ -62,7 +62,7 @@ public class CollideWithObject : MonoBehaviour
             //change weapon
             ObjectSpawn objectSpawn = collision.gameObject.GetComponent<ObjectSpawn>();
             int previousWeaponID = shooter.currGun;
-            shooter.currGun = objectSpawn.objectID;
+            shooter.SetGun(objectSpawn.objectID);
             //drop other weapon
             objectSpawn.UpdateObject(previousWeaponID);
 

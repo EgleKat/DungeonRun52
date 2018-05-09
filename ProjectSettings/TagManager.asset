@@ -14,6 +14,7 @@ TagManager:
   - Room
   - Weapon
   - Item
+  - InfoText
   layers:
   - Default
   - TransparentFX

@@ -16,6 +16,7 @@ public class PlayerItem : MonoBehaviour
     private MusicManager musicManager;
     private int shieldCharges;
     private CollideWithObject collideWithObject;
+    private GameObject infoTextObject;
 
 
 
@@ -25,13 +26,8 @@ public class PlayerItem : MonoBehaviour
         musicManager = GameObject.Find("Music Manager").GetComponent<MusicManager>();
         movement = gameObject.GetComponent<PlayerMovement>();
         collideWithObject = gameObject.GetComponent<CollideWithObject>();
+        infoTextObject = GameObject.FindGameObjectWithTag("InfoText");
 
-
-
-    }
-
-    private void Update()
-    {
 
 
     }
@@ -39,31 +35,40 @@ public class PlayerItem : MonoBehaviour
     public void ActivateItem(int id)
     {
 
+
         //boots
         if (id == 0)
         {
             movement.moveSpeedMultiplier = 2;
+            infoTextObject.GetComponent<FadeInOut>().ShowText("Speed Boots");
         }
         //shield
         else if (id == 1)
         {
             shieldCharges = 2;
             collideWithObject.shield = true;
+            infoTextObject.GetComponent<FadeInOut>().ShowText("Shield");
 
         }
         //revive
         else if (id == 2)
         {
             collideWithObject.revive = true;
+            infoTextObject.GetComponent<FadeInOut>().ShowText("Reviving Potion");
+
         }
         //broken shield
         else if (id == 3)
         {
             shieldCharges = 1;
             collideWithObject.shield = true;
+            infoTextObject.GetComponent<FadeInOut>().ShowText("Broken Shield");
 
         }
         currItemID = id;
+
+
+
 
         //if it's not boots, remove speed
         if (id != 0) movement.moveSpeedMultiplier = 1;
