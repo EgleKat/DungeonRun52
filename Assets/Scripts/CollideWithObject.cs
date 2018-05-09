@@ -20,6 +20,8 @@ public class CollideWithObject : MonoBehaviour
     public bool revive = false;
     private bool invincible = false;
 
+    private GameObject restartButton;
+
     // Use this for initialization
     void Start()
     {
@@ -34,7 +36,8 @@ public class CollideWithObject : MonoBehaviour
 
         ChangeItemHUD(item.currItemID);
         ChangeWeaponHUD(shooter.currGun);
-
+        restartButton = GameObject.Find("Game Over Button");
+        restartButton.SetActive(false);
 
     }
     private void Update()
@@ -130,8 +133,14 @@ public class CollideWithObject : MonoBehaviour
                     //Game Over
                     else
                     {
+                        restartButton.SetActive(true);
+                        GameObject.Find("Music Manager").GetComponent<MusicManager>();
+                        GameObject overTextObject = GameObject.FindGameObjectWithTag("Game Over");
+                        overTextObject.GetComponent<FadeInOut>().ShowText("Game Over");
+                        // Disable player
+                        gameObject.SetActive(false);
+                        //play a sound
 
-                        //Game Over
                     }
                 }
             }

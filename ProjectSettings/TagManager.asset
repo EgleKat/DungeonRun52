@@ -15,6 +15,7 @@ TagManager:
   - Weapon
   - Item
   - InfoText
+  - Game Over
   layers:
   - Default
   - TransparentFX

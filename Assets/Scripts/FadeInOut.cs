@@ -34,12 +34,12 @@ public class FadeInOut : MonoBehaviour
         SetAlpha(0);
     }
 
-    public void StartFadeIn()
+    private void StartFadeIn()
     {
         fadingIn = true;
         FadeIn();
     }
-    public void StartFadeOut()
+    private void StartFadeOut()
     {
         fadingOut = true;
         FadeOut();
@@ -68,7 +68,7 @@ public class FadeInOut : MonoBehaviour
             fadingOut = false;
     }
 
-    internal void ShowText(String text)
+    public void ShowText(String text)
     {
         infoText.text = text;
         StartFadeIn();
