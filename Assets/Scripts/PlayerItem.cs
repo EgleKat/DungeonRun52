@@ -54,7 +54,7 @@ public class PlayerItem : MonoBehaviour
         //revive
         else if (id == 2)
         {
-
+            collideWithObject.revive = true;
         }
         //broken shield
         else if (id == 3)
@@ -67,6 +67,9 @@ public class PlayerItem : MonoBehaviour
 
         //if it's not boots, remove speed
         if (id != 0) movement.moveSpeedMultiplier = 1;
+        //remove revive
+        else if (id != 2) collideWithObject.revive = false;
+
 
     }
 
@@ -78,9 +81,8 @@ public class PlayerItem : MonoBehaviour
         if (shieldCharges == 0)
         {
             musicManager.PlaySound("glassBreak");
-            collideWithObject.ChangeItemHUD(-1);
             collideWithObject.shield = false;
-            currItemID = -1;
+            RemoveHUDItemFromGame();
         }
         //shield has one charge
         else if (shieldCharges == 1)
@@ -91,5 +93,12 @@ public class PlayerItem : MonoBehaviour
             currItemID = 3;
 
         }
+    }
+
+    public void RemoveHUDItemFromGame()
+    {
+        collideWithObject.ChangeItemHUD(-1);
+        currItemID = -1;
+
     }
 }

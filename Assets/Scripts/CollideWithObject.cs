@@ -17,6 +17,9 @@ public class CollideWithObject : MonoBehaviour
 
     public Sprite[] HUDWeaponSprites;
     public Sprite[] HUDItemSprites;
+    public bool revive = false;
+    private bool invincible = false;
+
     // Use this for initialization
     void Start()
     {
@@ -93,7 +96,7 @@ public class CollideWithObject : MonoBehaviour
     }
     private void DamageToPlayer()
     {
-        if (collidingWithEnemy)
+        if (collidingWithEnemy && !invincible)
         {
             if (shield)
             {
@@ -104,9 +107,32 @@ public class CollideWithObject : MonoBehaviour
                 health--;
                 musicManager.PlaySound("hit");
                 heartDisplay.UpdateHeartSprite(health);
-                if (health != 0)
+                if (health == 0)
                 {
+                    //revive player
+                    if (revive)
+                    {
+                        //make a sound
+                        musicManager.PlaySound("windChime");
+                        //animation
+                        invincible = true;
+                        gameObject.GetComponent<Animator>().SetTrigger("reviving");
+                        //set hearts
+                        health = 3;
+                        //update heart display
+                        heartDisplay.UpdateHeartSprite(health);
+                        //remove item from game
+                        item.RemoveHUDItemFromGame();
+                        revive = false;
+                        Invoke("SetInvincibleToFalse", 0.7f);
+
+                    }
                     //Game Over
+                    else
+                    {
+
+                        //Game Over
+                    }
                 }
             }
 
@@ -122,5 +148,9 @@ public class CollideWithObject : MonoBehaviour
     {
         weaponHud.sprite = HUDWeaponSprites[id];
 
+    }
+    private void SetInvincibleToFalse()
+    {
+        invincible = false;
     }
 }

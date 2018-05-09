@@ -308,6 +308,7 @@ MonoBehaviour:
   itemSwap: {fileID: 8300000, guid: c733e8fd6746ab341b57100239962d5b, type: 3}
   shieldHit: {fileID: 8300000, guid: f21bbcc5ca98d9c41b3fa88ef93591dd, type: 3}
   glassBreak: {fileID: 8300000, guid: 5ff89da9e8daf234aacdb48516b1122b, type: 3}
+  windChime: {fileID: 8300000, guid: 6b3e28727a722254b819f15d2ac1b5b8, type: 3}
   backgroundMusic: {fileID: 8300000, guid: d6862b81a3d3c7d43b2ecd82a5ac1dbf, type: 3}
 --- !u!82 &540128008
 AudioSource:
@@ -1209,6 +1210,7 @@ MonoBehaviour:
   - {fileID: 21302064, guid: 5aeff45b27ffaee4ab0fe107ed94dceb, type: 3}
   - {fileID: 21301058, guid: 5aeff45b27ffaee4ab0fe107ed94dceb, type: 3}
   - {fileID: 21302096, guid: 5aeff45b27ffaee4ab0fe107ed94dceb, type: 3}
+  revive: 0
 --- !u!114 &1891497997
 MonoBehaviour:
   m_ObjectHideFlags: 0

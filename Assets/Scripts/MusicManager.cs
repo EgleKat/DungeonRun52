@@ -19,6 +19,7 @@ public class MusicManager : MonoBehaviour
     public AudioClip itemSwap;
     public AudioClip shieldHit;
     public AudioClip glassBreak;
+    public AudioClip windChime;
 
 
 
@@ -92,6 +93,11 @@ public class MusicManager : MonoBehaviour
         {
             audioSourceEffect.clip = glassBreak;
         }
+        else if (audioName == "windChime")
+        {
+            audioSourceEffect.clip = windChime;
+        }
+
         audioSourceEffect.Play();
     }
 }
