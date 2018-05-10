@@ -8,6 +8,8 @@ public class MusicManager : MonoBehaviour
 {
     AudioSource audioSourceBackground;
     AudioSource audioSourceEffect;
+    AudioSource audioSourceWeapon;
+
 
     public AudioClip hit;
     public AudioClip kick;
@@ -32,6 +34,8 @@ public class MusicManager : MonoBehaviour
     {
         audioSourceBackground = GetComponents<AudioSource>()[0];
         audioSourceEffect = GetComponents<AudioSource>()[1];
+        audioSourceWeapon = GetComponents<AudioSource>()[2];
+
 
     }
 
@@ -48,9 +52,8 @@ public class MusicManager : MonoBehaviour
         if (audioName != "stop")
             audioSourceBackground.Play();
     }
-    public void PlaySound(object nameAudio)
+    public void PlaySound(string audioName)
     {
-        String audioName = (String)nameAudio;
         audioSourceEffect.volume = 1;
 
         if (audioName == "hit")
@@ -60,22 +63,6 @@ public class MusicManager : MonoBehaviour
         else if (audioName == "kick")
         {
             audioSourceEffect.clip = kick;
-        }
-        else if (audioName == "laser")
-        {
-            audioSourceEffect.clip = laser;
-        }
-        else if (audioName == "slash")
-        {
-            audioSourceEffect.clip = slash;
-        }
-        else if (audioName == "plasma")
-        {
-            audioSourceEffect.clip = plasma;
-        }
-        else if (audioName == "shot")
-        {
-            audioSourceEffect.clip = shot;
         }
         else if (audioName == "weaponSwap")
         {
@@ -99,5 +86,28 @@ public class MusicManager : MonoBehaviour
         }
 
         audioSourceEffect.Play();
+    }
+
+    public void PlayWeaponSound(string audioName)
+    {
+        audioSourceWeapon.volume = 0.8f;
+
+        if (audioName == "laser")
+        {
+            audioSourceWeapon.clip = laser;
+        }
+        else if (audioName == "slash")
+        {
+            audioSourceWeapon.clip = slash;
+        }
+        else if (audioName == "plasma")
+        {
+            audioSourceWeapon.clip = plasma;
+        }
+        else if (audioName == "shot")
+        {
+            audioSourceWeapon.clip = shot;
+        }
+        audioSourceWeapon.Play();
     }
 }

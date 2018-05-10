@@ -71,7 +71,7 @@ public class PlayerShoot : MonoBehaviour
         if (gunID == 0)
         {
             //default
-            musicManager.PlaySound("shot");
+            musicManager.PlayWeaponSound("shot");
 
             GameObject fb;
             fb = Instantiate(bullets[0], transform.position, Quaternion.identity);
@@ -81,7 +81,7 @@ public class PlayerShoot : MonoBehaviour
         else if (gunID == 1)
         {
             //shuriken
-            musicManager.PlaySound("slash");
+            musicManager.PlayWeaponSound("slash");
 
             for (int i = 0; i < 3; i++)
             {
@@ -94,7 +94,7 @@ public class PlayerShoot : MonoBehaviour
         else if (gunID == 2)
         {
             //laser
-            musicManager.PlaySound("laser");
+            musicManager.PlayWeaponSound("laser");
 
             GameObject fb;
             Quaternion rot = (fireVector.y == 0 ? Quaternion.Euler(0, 0, 90) : Quaternion.identity);
@@ -105,7 +105,7 @@ public class PlayerShoot : MonoBehaviour
         else if (gunID == 3)
         {
             //spread
-            musicManager.PlaySound("slash");
+            musicManager.PlayWeaponSound("slash");
 
             GameObject fb;
             float spread = Random.Range(-5f, 5f);
@@ -116,7 +116,7 @@ public class PlayerShoot : MonoBehaviour
         else if (gunID == 4)
         {
             //Plasma ball
-            musicManager.PlaySound("plasma");
+            musicManager.PlayWeaponSound("plasma");
 
             GameObject fb;
             fb = Instantiate(bullets[4], transform.position, Quaternion.identity);
