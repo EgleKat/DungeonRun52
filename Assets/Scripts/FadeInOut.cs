@@ -16,7 +16,8 @@ public class FadeInOut : MonoBehaviour
     bool fadingOut = false;
     bool fadingIn = false;
 
-    private float timeToFade = 0.3f;
+    public float timeToFade = 0.3f;
+    public float fadeOutAfterSeconds = 3f;
 
     private void Awake()
     {
@@ -72,7 +73,7 @@ public class FadeInOut : MonoBehaviour
     {
         infoText.text = text;
         StartFadeIn();
-        Invoke("StartFadeOut", 5f);
+        Invoke("StartFadeOut", fadeOutAfterSeconds);
     }
 
     private void SetAlpha(float alpha)
