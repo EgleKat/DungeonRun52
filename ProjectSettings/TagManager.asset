@@ -17,6 +17,7 @@ TagManager:
   - InfoText
   - Game Over
   - Ladder
+  - ScoreText
   layers:
   - Default
   - TransparentFX
