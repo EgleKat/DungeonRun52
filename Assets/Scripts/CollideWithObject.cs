@@ -166,8 +166,9 @@ public class CollideWithObject : MonoBehaviour
                         HighScoreTimer highScoreTimer = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<HighScoreTimer>();
                         //disable counting
                         highScoreTimer.countdown = false;
-                        //update high score
+                        //update high score, level
                         GameController.SetHighScore(highScoreTimer.currentIntScore);
+                        GameController.SetHighestLevel();
                         GameController.ResetGameValues();
                         //play a sound
 
