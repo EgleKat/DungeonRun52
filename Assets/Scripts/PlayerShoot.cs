@@ -9,8 +9,6 @@ public class PlayerShoot : MonoBehaviour
 
     public List<GameObject> bullets;
 
-    [HideInInspector] public int currGun;
-
 
     private Vector2 fireVector;
     private float nextFire = 0;
@@ -18,17 +16,17 @@ public class PlayerShoot : MonoBehaviour
     private Rigidbody2D rb;
     private MusicManager musicManager;
     private GameObject infoTextObject;
-	private GameController gameController;
+    private GameController gameController;
 
 
-	private void Start()
+    private void Start()
     {
-		rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         musicManager = GameObject.Find("Music Manager").GetComponent<MusicManager>();
         infoTextObject = GameObject.FindGameObjectWithTag("InfoText");
 
-		
-	}
+
+    }
 
     private void Update()
     {
@@ -54,7 +52,7 @@ public class PlayerShoot : MonoBehaviour
         //Fire if can
         if (Time.time >= nextFire && (Input.GetButton("FireRight") || Input.GetButton("FireUp") || Input.GetButton("FireLeft") || Input.GetButton("FireDown")))
         {
-            FireBullet(currGun);
+            FireBullet(GameController.playerCurrentGun);
         }
 
     }
@@ -122,7 +120,7 @@ public class PlayerShoot : MonoBehaviour
     {
         Text infoText = infoTextObject.GetComponent<Text>();
 
-        currGun = gunID;
+        GameController.playerCurrentGun = gunID;
         if (gunID == 1)
         {
             infoTextObject.GetComponent<FadeInOut>().ShowText("Shurikens");

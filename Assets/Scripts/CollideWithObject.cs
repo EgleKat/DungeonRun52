@@ -7,11 +7,10 @@ using UnityEngine.SceneManagement;
 public class CollideWithObject : MonoBehaviour
 {
     private GameController gameController;
-    private int health = 6;
     private HeartDisplay heartDisplay;
     private PlayerShoot shooter;
     private PlayerItem item;
-    bool collidingWithEnemy;
+    bool collidingWithEnemy = false;
     public bool shield = false;
     MusicManager musicManager;
     private Image itemHud;
@@ -27,7 +26,7 @@ public class CollideWithObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        //gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         heartDisplay = GameObject.Find("Hearts").GetComponent<HeartDisplay>();
         musicManager = GameObject.Find("Music Manager").GetComponent<MusicManager>();
         shooter = gameObject.GetComponent<PlayerShoot>();
@@ -35,14 +34,19 @@ public class CollideWithObject : MonoBehaviour
         itemHud = GameObject.Find("Item Image").GetComponent<Image>();
         weaponHud = GameObject.Find("Weapon Image").GetComponent<Image>();
 
-        collidingWithEnemy = false;
-        item.currItemID = gameController.playerCurrentItem;
-        shooter.currGun = gameController.playerCurrentGun;
-
-        ChangeItemHUD(item.currItemID);
-        ChangeWeaponHUD(shooter.currGun);
         restartButton = GameObject.Find("Game Over Button");
         restartButton.SetActive(false);
+
+
+        //INITIALISE ITEM
+        ChangeItemHUD(GameController.playerCurrentItem);
+        //INITIALISE WEAPON
+        ChangeWeaponHUD(GameController.playerCurrentGun);
+        //INITIALISE HEARTS
+        heartDisplay.UpdateHeartSprite(GameController.playerCurrentHealth);
+
+
+
 
     }
     private void Update()
@@ -55,7 +59,7 @@ public class CollideWithObject : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            collidingWithEnemy = true; //used to periodically decrease health
+            collidingWithEnemy = true; //used to periodically decrease GameController.playerCurrentHealth
             DamageToPlayer();
         }
         else if (collision.gameObject.tag == "Ladder")
@@ -78,29 +82,29 @@ public class CollideWithObject : MonoBehaviour
             musicManager.PlaySound("weaponSwap");
             //change weapon
             ObjectSpawn objectSpawn = collision.gameObject.GetComponent<ObjectSpawn>();
-            int previousWeaponID = shooter.currGun;
+            int previousWeaponID = GameController.playerCurrentGun;
             shooter.SetGun(objectSpawn.objectID);
-            gameController.playerCurrentGun = objectSpawn.objectID;
+            GameController.playerCurrentGun = objectSpawn.objectID;
             //drop other weapon
             objectSpawn.UpdateObject(previousWeaponID);
 
             //update hud
-            ChangeWeaponHUD(shooter.currGun);
+            ChangeWeaponHUD(GameController.playerCurrentGun);
 
         }
         else if (collision.gameObject.tag == "Item")
         {
             ObjectSpawn objectSpawn = collision.gameObject.GetComponent<ObjectSpawn>();
-            int previousItemID = item.currItemID;
+            int previousItemID = GameController.playerCurrentItem;
             item.ActivateItem(objectSpawn.objectID);
-            gameController.playerCurrentItem = objectSpawn.objectID;
+            GameController.playerCurrentItem = objectSpawn.objectID;
             //Play Sound
             musicManager.PlaySound("itemSwap");
             //drop other item
             objectSpawn.UpdateObject(previousItemID);
 
             //update hud
-            ChangeItemHUD(item.currItemID);
+            ChangeItemHUD(GameController.playerCurrentItem);
 
         }
 
@@ -123,10 +127,10 @@ public class CollideWithObject : MonoBehaviour
             }
             else
             {
-                health--;
+                GameController.playerCurrentHealth--;
                 musicManager.PlaySound("hit");
-                heartDisplay.UpdateHeartSprite(health);
-                if (health == 0)
+                heartDisplay.UpdateHeartSprite(GameController.playerCurrentHealth);
+                if (GameController.playerCurrentHealth == 0)
                 {
                     //revive player
                     if (revive)
@@ -137,9 +141,9 @@ public class CollideWithObject : MonoBehaviour
                         invincible = true;
                         gameObject.GetComponent<Animator>().SetTrigger("reviving");
                         //set hearts
-                        health = 3;
+                        GameController.playerCurrentHealth = 3;
                         //update heart display
-                        heartDisplay.UpdateHeartSprite(health);
+                        heartDisplay.UpdateHeartSprite(GameController.playerCurrentHealth);
                         //remove item from game
                         item.RemoveHUDItemFromGame();
                         revive = false;

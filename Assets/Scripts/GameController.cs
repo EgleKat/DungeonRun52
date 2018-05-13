@@ -6,8 +6,9 @@ public class GameController : MonoBehaviour
 {
 
     public static GameController instance = null;
-    public int playerCurrentGun;
-    public int playerCurrentItem;
+    public static int playerCurrentGun;     //updated every time a gun is swapped
+    public static int playerCurrentItem;    //updated every time iten is changed
+    public static int playerCurrentHealth;
     public static float dmgMultiplier = 1;
 
     private static int highScore;           //updated at the END of the GAME
@@ -18,6 +19,9 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         currentRunScore = 0;
         highScore = 0;
+        playerCurrentHealth = 6;
+        playerCurrentGun = 0;
+        playerCurrentItem = -1;
     }
 
     private void Awake()

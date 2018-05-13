@@ -9,10 +9,9 @@ public class PlayerItem : MonoBehaviour
 {
 
     private PlayerMovement movement;
-	private GameController gameController;
+    private GameController gameController;
 
-	[HideInInspector]
-    public int currItemID;
+
     private Rigidbody2D rb;
     private MusicManager musicManager;
     private int shieldCharges;
@@ -23,11 +22,12 @@ public class PlayerItem : MonoBehaviour
 
     private void Start()
     {
-		rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         musicManager = GameObject.Find("Music Manager").GetComponent<MusicManager>();
         movement = gameObject.GetComponent<PlayerMovement>();
         collideWithObject = gameObject.GetComponent<CollideWithObject>();
         infoTextObject = GameObject.FindGameObjectWithTag("InfoText");
+        ActivateItem(GameController.playerCurrentItem);
 
     }
 
@@ -64,7 +64,7 @@ public class PlayerItem : MonoBehaviour
             infoTextObject.GetComponent<FadeInOut>().ShowText("Broken Shield");
 
         }
-        currItemID = id;
+        GameController.playerCurrentItem = id;
 
 
 
@@ -94,7 +94,7 @@ public class PlayerItem : MonoBehaviour
             musicManager.PlaySound("shieldHit");
             //change hud to half a shield
             collideWithObject.ChangeItemHUD(3);
-            currItemID = 3;
+            GameController.playerCurrentItem = 3;
 
         }
     }
@@ -102,7 +102,7 @@ public class PlayerItem : MonoBehaviour
     public void RemoveHUDItemFromGame()
     {
         collideWithObject.ChangeItemHUD(-1);
-        currItemID = -1;
+        GameController.playerCurrentItem = -1;
 
     }
 }
