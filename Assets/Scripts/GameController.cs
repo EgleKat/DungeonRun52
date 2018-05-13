@@ -14,14 +14,13 @@ public class GameController : MonoBehaviour
     private static int highScore;           //updated at the END of the GAME
     public static int currentRunScore;      //updated at the END of the level
 
+    public static int currentLevel;
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
-        currentRunScore = 0;
+        ResetGameValues();
         highScore = 0;
-        playerCurrentHealth = 6;
-        playerCurrentGun = 0;
-        playerCurrentItem = -1;
+
     }
 
     private void Awake()
@@ -44,5 +43,14 @@ public class GameController : MonoBehaviour
     public static int GetHighScore()
     {
         return highScore;
+    }
+
+    public static void ResetGameValues()
+    {
+        currentRunScore = 0;
+        playerCurrentHealth = 6;
+        playerCurrentGun = 0;
+        currentLevel = 1;
+        playerCurrentItem = -1;
     }
 }

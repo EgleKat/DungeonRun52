@@ -118,7 +118,6 @@ public class PlayerShoot : MonoBehaviour
     }
     public void SetGun(int gunID)
     {
-        Text infoText = infoTextObject.GetComponent<Text>();
 
         GameController.playerCurrentGun = gunID;
         if (gunID == 1)

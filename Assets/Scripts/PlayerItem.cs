@@ -12,7 +12,7 @@ public class PlayerItem : MonoBehaviour
     private GameController gameController;
 
 
-    private Rigidbody2D rb;
+
     private MusicManager musicManager;
     private int shieldCharges;
     private CollideWithObject collideWithObject;
@@ -22,7 +22,7 @@ public class PlayerItem : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+
         musicManager = GameObject.Find("Music Manager").GetComponent<MusicManager>();
         movement = gameObject.GetComponent<PlayerMovement>();
         collideWithObject = gameObject.GetComponent<CollideWithObject>();

@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class CollideWithObject : MonoBehaviour
 {
-    private GameController gameController;
     private HeartDisplay heartDisplay;
     private PlayerShoot shooter;
     private PlayerItem item;
@@ -26,7 +25,6 @@ public class CollideWithObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         heartDisplay = GameObject.Find("Hearts").GetComponent<HeartDisplay>();
         musicManager = GameObject.Find("Music Manager").GetComponent<MusicManager>();
         shooter = gameObject.GetComponent<PlayerShoot>();
@@ -45,6 +43,9 @@ public class CollideWithObject : MonoBehaviour
         //INITIALISE HEARTS
         heartDisplay.UpdateHeartSprite(GameController.playerCurrentHealth);
 
+
+        //show level text (didn't know where to put this)
+        GameObject.Find("Level Name").GetComponent<FadeInOut>().ShowText("Dungeon " + GameController.currentLevel);
 
 
 
@@ -70,6 +71,8 @@ public class CollideWithObject : MonoBehaviour
             //set current high score
             GameController.currentRunScore += GameObject.FindGameObjectWithTag("ScoreText").GetComponent<HighScoreTimer>().currentIntScore;
             Debug.Log("Current Run Score: " + GameController.currentRunScore);
+            //Set current level
+            GameController.currentLevel++;
         }
 
     }
@@ -165,7 +168,7 @@ public class CollideWithObject : MonoBehaviour
                         highScoreTimer.countdown = false;
                         //update high score
                         GameController.SetHighScore(highScoreTimer.currentIntScore);
-                        GameController.currentRunScore = 0;
+                        GameController.ResetGameValues();
                         //play a sound
 
                     }
@@ -189,4 +192,6 @@ public class CollideWithObject : MonoBehaviour
     {
         invincible = false;
     }
+
+
 }
