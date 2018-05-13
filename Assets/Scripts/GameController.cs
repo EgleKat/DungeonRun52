@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public int playerCurrentGun;
     public int playerCurrentItem;
     public static float dmgMultiplier = 1;
+
     private static int highScore;           //updated at the END of the GAME
     public static int currentRunScore;      //updated at the END of the level
 
