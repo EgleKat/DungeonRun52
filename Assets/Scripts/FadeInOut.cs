@@ -35,7 +35,7 @@ public class FadeInOut : MonoBehaviour
         SetAlpha(0);
     }
 
-    private void StartFadeIn()
+    public void StartFadeIn()
     {
         fadingIn = true;
         FadeIn();

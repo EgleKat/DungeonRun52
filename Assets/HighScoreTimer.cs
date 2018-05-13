@@ -8,7 +8,7 @@ public class HighScoreTimer : MonoBehaviour
 
     private float currentScore = 200;       //keep track of current score in float
     public int currentIntScore;            //used to display score on screen and to write globally
-    private bool countdown;
+    public bool countdown;
     // Use this for initialization
     void Start()
     {
@@ -21,7 +21,7 @@ public class HighScoreTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentScore > 0)
+        if (currentScore > 0 && countdown)
         {
             currentScore -= Time.deltaTime;
             currentIntScore = (int)currentScore;

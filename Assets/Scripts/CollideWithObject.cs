@@ -152,11 +152,15 @@ public class CollideWithObject : MonoBehaviour
                         restartButton.SetActive(true);
                         GameObject.Find("Music Manager").GetComponent<MusicManager>();
                         GameObject overTextObject = GameObject.FindGameObjectWithTag("Game Over");
-                        overTextObject.GetComponent<FadeInOut>().ShowText("Game Over");
+                        overTextObject.GetComponent<FadeInOut>().StartFadeIn();
                         // Disable player
                         gameObject.SetActive(false);
+
+                        HighScoreTimer highScoreTimer = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<HighScoreTimer>();
+                        //disable counting
+                        highScoreTimer.countdown = false;
                         //update high score
-                        GameController.SetHighScore(GameObject.FindGameObjectWithTag("ScoreText").GetComponent<HighScoreTimer>().currentIntScore);
+                        GameController.SetHighScore(highScoreTimer.currentIntScore);
                         GameController.currentRunScore = 0;
                         //play a sound
 
