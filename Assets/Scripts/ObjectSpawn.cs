@@ -6,28 +6,35 @@ public class ObjectSpawn : MonoBehaviour
 {
     [HideInInspector]
     public int objectID;
+	
+	private GameObject player;
+	private Sprite spr;
 
-    public Sprite[] sprites;
-    static System.Random random = new System.Random();
-
-    private void Start()
+	private void Start()
     {
-        if (gameObject.tag == "Weapon")
-            objectID = random.Next(1, 5);
-        else if (gameObject.tag == "Item")
-            objectID = random.Next(0, 3);
-        //objectID = 4;
-
-        gameObject.GetComponent<SpriteRenderer>().sprite = sprites[objectID];
-
+		player = GameObject.FindGameObjectWithTag("Player");
+        if (gameObject.tag == "Weapon") {
+			objectID = Random.Range(1, 5);
+			spr = player.GetComponent<CollideWithObject>().HUDWeaponSprites[objectID];
+		} else if (gameObject.tag == "Item") {
+			objectID = Random.Range(0, 3);
+			spr = player.GetComponent<CollideWithObject>().HUDItemSprites[objectID + 1];
+		}
+		gameObject.GetComponent<SpriteRenderer>().sprite = spr;
     }
     public void UpdateObject(int id)
     {
-        //if the player does not have any items before picking up this one, remove it from the game
-        if (id < 0)
+		Sprite otherSpr = new Sprite();
+		if (gameObject.tag == "Weapon") {
+			otherSpr = player.GetComponent<CollideWithObject>().HUDWeaponSprites[id];
+		} else if (gameObject.tag == "Item") {
+			otherSpr = player.GetComponent<CollideWithObject>().HUDItemSprites[id + 1];
+		}
+		//if the player does not have any items before picking up this one, remove it from the game
+		if (id < 0)
             gameObject.SetActive(false);
         else
-            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[id];
+            gameObject.GetComponent<SpriteRenderer>().sprite = otherSpr;
 
         //Set the object on the floor id
         objectID = id;

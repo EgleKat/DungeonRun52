@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CollideWithObject : MonoBehaviour
 {
+	private GameController gameController;
     private int health = 6;
     private HeartDisplay heartDisplay;
     private PlayerShoot shooter;
@@ -22,10 +24,11 @@ public class CollideWithObject : MonoBehaviour
 
     private GameObject restartButton;
 
-    // Use this for initialization
-    void Start()
+	// Use this for initialization
+	void Start()
     {
-        heartDisplay = GameObject.Find("Hearts").GetComponent<HeartDisplay>();
+		gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+		heartDisplay = GameObject.Find("Hearts").GetComponent<HeartDisplay>();
         musicManager = GameObject.Find("Music Manager").GetComponent<MusicManager>();
         shooter = gameObject.GetComponent<PlayerShoot>();
         item = gameObject.GetComponent<PlayerItem>();
@@ -33,8 +36,10 @@ public class CollideWithObject : MonoBehaviour
         weaponHud = GameObject.Find("Weapon Image").GetComponent<Image>();
 
         collidingWithEnemy = false;
+		item.currItemID = gameController.playerCurrentItem;
+		shooter.currGun = gameController.playerCurrentGun;
 
-        ChangeItemHUD(item.currItemID);
+		ChangeItemHUD(item.currItemID);
         ChangeWeaponHUD(shooter.currGun);
         restartButton = GameObject.Find("Game Over Button");
         restartButton.SetActive(false);
@@ -52,9 +57,13 @@ public class CollideWithObject : MonoBehaviour
         {
             collidingWithEnemy = true; //used to periodically decrease health
             DamageToPlayer();
-        }
+        } else if (collision.gameObject.tag == "Ladder") {
+			//Restart level
+			Debug.Log("Restarting room");
+			SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+		}
 
-    }
+	}
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Weapon")
@@ -66,29 +75,31 @@ public class CollideWithObject : MonoBehaviour
             ObjectSpawn objectSpawn = collision.gameObject.GetComponent<ObjectSpawn>();
             int previousWeaponID = shooter.currGun;
             shooter.SetGun(objectSpawn.objectID);
-            //drop other weapon
-            objectSpawn.UpdateObject(previousWeaponID);
+			gameController.playerCurrentGun = objectSpawn.objectID;
+			//drop other weapon
+			objectSpawn.UpdateObject(previousWeaponID);
 
             //update hud
             ChangeWeaponHUD(shooter.currGun);
 
-        }
+		}
         else if (collision.gameObject.tag == "Item")
         {
             ObjectSpawn objectSpawn = collision.gameObject.GetComponent<ObjectSpawn>();
             int previousItemID = item.currItemID;
             item.ActivateItem(objectSpawn.objectID);
-            //Play Sound
-            musicManager.PlaySound("itemSwap");
+			gameController.playerCurrentItem = objectSpawn.objectID;
+			//Play Sound
+			musicManager.PlaySound("itemSwap");
             //drop other item
             objectSpawn.UpdateObject(previousItemID);
 
             //update hud
             ChangeItemHUD(item.currItemID);
 
-        }
+		}
 
-    }
+	}
 
     private void OnCollisionExit2D(Collision2D collision)
     {

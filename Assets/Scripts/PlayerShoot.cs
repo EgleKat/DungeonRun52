@@ -9,7 +9,7 @@ public class PlayerShoot : MonoBehaviour
 
     public List<GameObject> bullets;
 
-    [HideInInspector] public int currGun = 0;
+    [HideInInspector] public int currGun;
 
 
     private Vector2 fireVector;
@@ -18,15 +18,17 @@ public class PlayerShoot : MonoBehaviour
     private Rigidbody2D rb;
     private MusicManager musicManager;
     private GameObject infoTextObject;
+	private GameController gameController;
 
 
-    private void Start()
+	private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+		rb = GetComponent<Rigidbody2D>();
         musicManager = GameObject.Find("Music Manager").GetComponent<MusicManager>();
         infoTextObject = GameObject.FindGameObjectWithTag("InfoText");
 
-    }
+		
+	}
 
     private void Update()
     {
@@ -55,14 +57,6 @@ public class PlayerShoot : MonoBehaviour
             FireBullet(currGun);
         }
 
-        for (int i = 0; i < 5; i++)
-        {
-            if (Input.GetKeyDown("" + i))
-            {
-                currGun = i;
-            }
-        }
-
     }
 
     private void FireBullet(int gunID)
@@ -74,7 +68,7 @@ public class PlayerShoot : MonoBehaviour
             musicManager.PlayWeaponSound("shot");
 
             GameObject fb;
-            fb = Instantiate(bullets[0], transform.position, Quaternion.identity);
+            fb = Instantiate(bullets[0], transform.position + new Vector3(0, -0.2f, 0), Quaternion.identity);
             fb.GetComponent<PlayerBullet>().moveVector = rb.velocity * 0.4f + fireVector * 4;
             nextFire = Time.time + 0.5f;
         }
@@ -86,7 +80,7 @@ public class PlayerShoot : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 GameObject fb;
-                fb = Instantiate(bullets[1], transform.position, Quaternion.identity);
+                fb = Instantiate(bullets[1], transform.position + new Vector3(0, -0.2f, 0), Quaternion.identity);
                 fb.GetComponent<PlayerBullet>().moveVector = rb.velocity * 0.2f + fireVector.Rotate(-30 + 30 * i) * 6;
             }
             nextFire = Time.time + 0.8f;
@@ -98,18 +92,18 @@ public class PlayerShoot : MonoBehaviour
 
             GameObject fb;
             Quaternion rot = (fireVector.y == 0 ? Quaternion.Euler(0, 0, 90) : Quaternion.identity);
-            fb = Instantiate(bullets[2], transform.position + new Vector3(fireVector.x, fireVector.y, 0) * 0.5f, rot);
+            fb = Instantiate(bullets[2], transform.position + new Vector3(fireVector.x, fireVector.y, 0) * 0.5f + new Vector3(0, -0.2f, 0), rot);
             fb.GetComponent<PlayerBullet>().moveVector = fireVector * 15f;
             nextFire = Time.time + 0.03f;
         }
         else if (gunID == 3)
         {
             //spread
-            musicManager.PlayWeaponSound("slash");
+            musicManager.PlayWeaponSound("shot");
 
             GameObject fb;
             float spread = Random.Range(-5f, 5f);
-            fb = Instantiate(bullets[3], transform.position, Quaternion.identity);
+            fb = Instantiate(bullets[3], transform.position + new Vector3(0, -0.2f, 0), Quaternion.identity);
             fb.GetComponent<PlayerBullet>().moveVector = rb.velocity * 0.2f + fireVector.Rotate(spread) * 8;
             nextFire = Time.time + 0.15f;
         }
@@ -119,7 +113,7 @@ public class PlayerShoot : MonoBehaviour
             musicManager.PlayWeaponSound("plasma");
 
             GameObject fb;
-            fb = Instantiate(bullets[4], transform.position, Quaternion.identity);
+            fb = Instantiate(bullets[4], transform.position + new Vector3(0, -0.2f, 0), Quaternion.identity);
             fb.GetComponent<PlayerBullet>().moveVector = rb.velocity * 0.2f + fireVector * 2.5f;
             nextFire = Time.time + 2f;
         }
@@ -131,7 +125,7 @@ public class PlayerShoot : MonoBehaviour
         currGun = gunID;
         if (gunID == 1)
         {
-            infoTextObject.GetComponent<FadeInOut>().ShowText("Shuriken");
+            infoTextObject.GetComponent<FadeInOut>().ShowText("Shurikens");
         }
         else if (gunID == 2)
         {
@@ -139,15 +133,15 @@ public class PlayerShoot : MonoBehaviour
         }
         else if (gunID == 3)
         {
-            infoTextObject.GetComponent<FadeInOut>().ShowText("Shotgun");
+            infoTextObject.GetComponent<FadeInOut>().ShowText("Sub-Machine Gun");
         }
         else if (gunID == 4)
         {
-            infoTextObject.GetComponent<FadeInOut>().ShowText("Plasma");
+            infoTextObject.GetComponent<FadeInOut>().ShowText("Magic Wand");
         }
         else if (gunID == 0)
         {
-            infoTextObject.GetComponent<FadeInOut>().ShowText("Pea Shooter");
+            infoTextObject.GetComponent<FadeInOut>().ShowText("Peashooter");
         }
     }
 }

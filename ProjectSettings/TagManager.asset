@@ -16,6 +16,7 @@ TagManager:
   - Item
   - InfoText
   - Game Over
+  - Ladder
   layers:
   - Default
   - TransparentFX
@@ -42,7 +43,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Ladder
   - 
   - 
   - 

@@ -19,9 +19,11 @@ public class FloorManager : MonoBehaviour {
 
 	private CameraMovement cm;
 	private GameObject player;
-	private List<GameObject> rooms = new List<GameObject>();
+	public List<GameObject> rooms = new List<GameObject>();
 	private Dictionary<int, Vector2> roomSizes;
 	private List<PathEdge> pel;
+
+	public GameObject slider;
 
 	public class SimRoom {
 
@@ -121,10 +123,10 @@ public class FloorManager : MonoBehaviour {
 	}
 
 	private void Start() {
-        //test
-        Random.InitState(1);
 		cm = Camera.main.gameObject.GetComponent<CameraMovement>();
 		player = GameObject.FindGameObjectWithTag("Player");
+		slider = GameObject.Find("Canvas/BossHP");
+		slider.SetActive(false);
 		GetRoomSizes();
 		LayoutFloor();
 	}
@@ -392,8 +394,10 @@ public class FloorManager : MonoBehaviour {
 	//Change room
 	public void ChangeRoom(int locID) {
 		currLoc = locID;
-		cm.LockToPoint(new Vector2(rooms[locID].transform.position.x, rooms[locID].transform.position.y)); 
-		rooms[locID].GetComponent<RoomMain>().CheckEnemies();
+		cm.LockToPoint(new Vector2(rooms[locID].transform.position.x, rooms[locID].transform.position.y));
+		RoomMain rm = rooms[locID].GetComponent<RoomMain>();
+		rm.CheckEnemies();
+		slider.SetActive(rm.bossRoom);
 	}
 
 	public void UnlockCamera() {

@@ -9,9 +9,10 @@ public class PlayerItem : MonoBehaviour
 {
 
     private PlayerMovement movement;
+	private GameController gameController;
 
-    [HideInInspector]
-    public int currItemID = -1;
+	[HideInInspector]
+    public int currItemID;
     private Rigidbody2D rb;
     private MusicManager musicManager;
     private int shieldCharges;
@@ -22,13 +23,11 @@ public class PlayerItem : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+		rb = GetComponent<Rigidbody2D>();
         musicManager = GameObject.Find("Music Manager").GetComponent<MusicManager>();
         movement = gameObject.GetComponent<PlayerMovement>();
         collideWithObject = gameObject.GetComponent<CollideWithObject>();
         infoTextObject = GameObject.FindGameObjectWithTag("InfoText");
-
-
 
     }
 
