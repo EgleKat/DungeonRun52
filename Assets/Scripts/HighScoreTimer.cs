@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HighScoreTimer : MonoBehaviour
 {
 
-    private float currentScore = 200;       //keep track of current score in float
+    private float currentScore = 100;       //keep track of current score in float
     public int currentIntScore;            //used to display score on screen and to write globally
     public bool countdown;
     // Use this for initialization

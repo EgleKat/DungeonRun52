@@ -251,7 +251,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5997d6359065e734a8792989072cdda9, type: 3}
   - {fileID: 21300000, guid: f3f214d38beb30e4caf30483c649f5f1, type: 3}
   gridSize: {x: 80, y: 50}
-  maxRooms: 0
+  maxRooms: 5
   genAssets:
   - {fileID: 1441743511249978, guid: 8b98075d195a39b41837c4773334f543, type: 2}
   - {fileID: 1539517986326344, guid: 54ddfb283eb7d8c41af6adc68e16140f, type: 2}
