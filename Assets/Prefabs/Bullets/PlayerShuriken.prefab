@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9017cd9209aa44bac12bea05c504df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 4
+  dmg: 2
   lifetime: 0.5
   piercing: 0
   weight: 0.8

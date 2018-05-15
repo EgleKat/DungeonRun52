@@ -14,7 +14,7 @@ public class ObjectSpawn : MonoBehaviour
     {
 		player = GameObject.FindGameObjectWithTag("Player");
         if (gameObject.tag == "Weapon") {
-			objectID = Random.Range(1, 5);
+			objectID = Random.Range(0, 5);
 			spr = player.GetComponent<CollideWithObject>().HUDWeaponSprites[objectID];
 		} else if (gameObject.tag == "Item") {
 			objectID = Random.Range(0, 3);
