@@ -68,8 +68,8 @@ public class CollideWithObject : MonoBehaviour
             //Restart level
             Debug.Log("Restarting room");
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-            //set current high score
-            GameController.currentRunScore += GameObject.FindGameObjectWithTag("ScoreText").GetComponent<HighScoreTimer>().currentIntScore;
+            //set current score
+            GameController.currentRunScore = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<HighScoreTimer>().currentIntScore;
             Debug.Log("Current Run Score: " + GameController.currentRunScore);
             //Set current level
             GameController.currentLevel++;
